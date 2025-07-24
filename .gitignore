@@ -1,0 +1,6 @@
+*/build/
+*/.cache/
+p
+*.o
+*.elf
+*.bin
