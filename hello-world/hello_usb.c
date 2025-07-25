@@ -14,7 +14,7 @@ int main() {
 
     while (true) {
         gpio_put(LED_PIN, 1);
-        printf("Hello, world! %d\n", n);
+        printf("Hello, world! %d %p\n", n, &n);
         sleep_ms(500);
 
         gpio_put(LED_PIN, 0);
