@@ -1,0 +1,19 @@
+CC = gcc
+
+stage_1_libcall: libcall.c
+	gcc -c libcall.c
+	ar r libcall.a libcall.o
+
+
+stage_2_run: run.c
+	gcc -c run.c
+
+stage_3: stage_1_libcall stage_2_run
+	gcc run.o -L. -lcall -nostartfiles
+
+clean:
+	rm -f a.out
+	rm -f libcall.a
+	rm -f libcall.o
+	rm -f run.o
+	
