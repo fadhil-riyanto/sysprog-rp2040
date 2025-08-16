@@ -1,0 +1,4 @@
+MEMORY 
+{
+        FLASH(RX) : ORIGIN = 0x10000000, LENGTH = 
+}

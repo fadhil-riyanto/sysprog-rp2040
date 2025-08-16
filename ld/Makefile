@@ -1,19 +1,19 @@
-CC = gcc
+mk_libextern: extern.c
+	clang -c extern.c
+	ar rc libextern.a extern.o
 
-stage_1_libcall: libcall.c
-	gcc -c libcall.c
-	ar r libcall.a libcall.o
+mk_run: run.c
+	clang -c run.c
 
+all: mk_libextern mk_run
+	clang run.o -L. -lextern -nostartfiles
 
-stage_2_run: run.c
-	gcc -c run.c
-
-stage_3: stage_1_libcall stage_2_run
-	gcc run.o -L. -lcall -nostartfiles
+all_custom_ld: mk_libextern mk_run
+	clang run.o -L. -lextern -nostartfiles -nostdlib -Wl,-T,link.ld -g -ggdb3 -v
 
 clean:
 	rm -f a.out
-	rm -f libcall.a
-	rm -f libcall.o
+	rm -f libextern.a
+	rm -f extern.o
 	rm -f run.o
 	
